@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse pharmacy stores in Ho, Volta Region at Sky Health Care, offering medications and health products.">
+    <meta name="keywords" content="Sky Health Care, pharmacy, Ho, Volta Region, medications">
+    <title>Sky Health Care - Ho Pharmacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #007bff;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu button {
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-menu button:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 0.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 0.3rem 0.5rem;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            padding: 0.3rem;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+
+        .search-container button:hover {
+            color: #0056b3;
+            transform: none;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            max-height: 60px;
+            width: auto;
+            max-width: 200px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #ffffff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo-left {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-left: 0.5rem;
+        }
+
+        .header-logo-right {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-right: 0.5rem;
+        }
+
+        .header-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 0.5rem;
+        }
+
+        .group-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Slideshow Section */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 300px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 0.6rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .slideshow-controls {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .slideshow-controls button {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .back-button {
+            display: block;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838;
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+            padding: 1rem 0;
+        }
+
+        .store-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .store-card:hover {
+            transform: scale(1.05);
+        }
+
+        .store-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .store-card h4 {
+            font-size: 1rem;
+            margin: 0.4rem 0;
+        }
+
+        .store-card p {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.2rem;
+        }
+
+        .store-card .rating {
+            font-size: 0.9rem;
+            color: #ffc107;
+            margin-bottom: 0.4rem;
+        }
+
+        .store-card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .store-card button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1rem;
+            margin: 0 0.4rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #ddd;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.4rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 1rem;
+                padding: 0.2rem;
+                margin-left: 0.3rem;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0.5rem;
+                background-color: #007bff;
+                flex-direction: column;
+                width: 150px;
+                padding: 0.5rem;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu button {
+                width: 100%;
+                margin: 0.2rem 0;
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .search-container input {
+                width: 80px;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .search-container button {
+                padding: 0.2rem;
+                font-size: 0.75rem;
+            }
+
+            .nav-logo {
+                max-height: 30px;
+                max-width: 100px;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .header-logo-left {
+                max-height: 40px;
+                max-width: 100px;
+                margin-left: 0.3rem;
+            }
+
+            .header-logo-right {
+                max-height: 40px;
+                max-width: 100px;
+                margin-right: 0.3rem;
+            }
+
+            .header-text-container {
+                margin: 0 0.3rem;
+            }
+
+            .group-text {
+                font-size: 0.6rem;
+            }
+
+            header h1 {
+                font-size: 1rem;
+            }
+
+            .slideshow-container {
+                height: 200px;
+            }
+
+            .slide img {
+                max-height: 200px;
+            }
+
+            .slide-caption {
+                font-size: 0.75rem;
+                padding: 0.4rem;
+            }
+
+            .slideshow-controls button {
+                padding: 3px 6px;
+                font-size: 0.7rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .back-button {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .store-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .store-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+            <div class="nav-menu">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='#orders'">Orders</button>
+                <button onclick="window.location.href='login.html'">logout</button>
+            </div>
+            <div class="nav-logo-container">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="https://via.placeholder.com/300x80" alt="Sky Health Care Navigation Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search stores..." oninput="searchStores()" aria-label="Search for stores">
+                <button aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Left" class="header-logo-left">
+        <div class="header-text-container">
+            <div class="group-text">(GROUP-2)</div>
+            <h1>Sky Health Care - Ho Pharmacy</h1>
+        </div>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Right" class="header-logo-right">
+    </header>
+
+    <section class="slideshow-container">
+        <div class="slide" onclick="window.location.href='ho-store1.html'" role="group" aria-label="Slide 1">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+1+Promotion" alt="Ho Store 1 Promotion" aria-describedby="caption1">
+            <div id="caption1" class="slide-caption">Special Offer at Ho Store 1</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store2.html'" role="group" aria-label="Slide 2">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+2+Promotion" alt="Ho Store 2 Promotion" aria-describedby="caption2">
+            <div id="caption2" class="slide-caption">Discounts at Ho Store 2</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store3.html'" role="group" aria-label="Slide 3">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+3+Promotion" alt="Ho Store 3 Promotion" aria-describedby="caption3">
+            <div id="caption3" class="slide-caption">New Arrivals at Ho Store 3</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store4.html'" role="group" aria-label="Slide 4">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+4+Promotion" alt="Ho Store 4 Promotion" aria-describedby="caption4">
+            <div id="caption4" class="slide-caption">Sale at Ho Store 4</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store5.html'" role="group" aria-label="Slide 5">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+5+Promotion" alt="Ho Store 5 Promotion" aria-describedby="caption5">
+            <div id="caption5" class="slide-caption">Special Deals at Ho Store 5</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store6.html'" role="group" aria-label="Slide 6">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+6+Promotion" alt="Ho Store 6 Promotion" aria-describedby="caption6">
+            <div id="caption6" class="slide-caption">Offers at Ho Store 6</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store7.html'" role="group" aria-label="Slide 7">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+7+Promotion" alt="Ho Store 7 Promotion" aria-describedby="caption7">
+            <div id="caption7" class="slide-caption">Promotions at Ho Store 7</div>
+        </div>
+        <div class="slide" onclick="window.location.href='ho-store8.html'" role="group" aria-label="Slide 8">
+            <img src="https://via.placeholder.com/800x400?text=Ho+Store+8+Promotion" alt="Ho Store 8 Promotion" aria-describedby="caption8">
+            <div id="caption8" class="slide-caption">Discounts at Ho Store 8</div>
+        </div>
+        <div class="slideshow-controls">
+            <button onclick="changeSlide(-1)" aria-label="Previous slide">◄</button>
+            <button onclick="togglePause()" aria-label="Pause or play slideshow">⏯</button>
+            <button onclick="changeSlide(1)" aria-label="Next slide">►</button>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <a href="index.html" class="back-button">Back to Home</a>
+        <h2>Browse Pharmacy Stores in Ho</h2>
+        <div class="store-grid" id="storeGrid">
+            <!-- Store cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Contact us: info@skyhealthcare.com.gh | Phone: +233-555-1234</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">🌐</a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">📸</a>
+            </div>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>© 2025 Sky Health Care. All rights reserved. | Serving Greater Accra, Ashanti, Central, Western (Takoradi), Eastern, Volta Regions</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sample data for 50 placeholder stores in Ho
+            const stores = Array.from({ length: 50 }, (_, i) => ({
+                name: `Store ${i + 1} - Ho Pharmacy ${i + 1}`,
+                description: `Pharmacy store in Ho offering medications.`,
+                image: "https://via.placeholder.com/150",
+                rating: (Math.random() * (5 - 3.5) + 3.5).toFixed(1),
+                link: `ho-store${i + 1}.html`
+            }));
+
+            function displayStores(storeList) {
+                const storeGrid = document.getElementById('storeGrid');
+                storeGrid.innerHTML = '';
+                if (storeList.length === 0) {
+                    storeGrid.innerHTML = '<p>No stores found. Try a different search term.</p>';
+                    return;
+                }
+                storeList.forEach(store => {
+                    const storeCard = document.createElement('div');
+                    storeCard.classList.add('store-card');
+                    storeCard.innerHTML = `
+                        <img src="${store.image}" alt="${store.name}">
+                        <h4>${store.name}</h4>
+                        <p>${store.description}</p>
+                        <div class="rating">★${store.rating}</div>
+                        <button onclick="window.location.href='${store.link}'">Select Store</button>
+                    `;
+                    storeGrid.appendChild(storeCard);
+                });
+            }
+
+            function searchStores() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const filteredStores = stores.filter(store =>
+                    store.name.toLowerCase().includes(searchInput) ||
+                    store.description.toLowerCase().includes(searchInput)
+                );
+                displayStores(filteredStores);
+            }
+
+            // Initial display of all stores
+            displayStores(stores);
+            document.getElementById('searchInput').addEventListener('input', searchStores);
+
+            // Slideshow JavaScript
+            let slideIndex = 0;
+            let isPaused = false;
+            const slides = document.getElementsByClassName("slide");
+
+            function showSlides() {
+                if (isPaused) return;
+                if (slides.length === 0) {
+                    console.log('No slides found');
+                    return;
+                }
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1 }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 3000); // Change slide every 3 seconds
+            }
+
+            function changeSlide(n) {
+                slideIndex += n - 1;
+                if (slideIndex >= slides.length) slideIndex = 0;
+                if (slideIndex < 0) slideIndex = slides.length - 1;
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slides[slideIndex].style.display = "block";
+            }
+
+            function togglePause() {
+                isPaused = !isPaused;
+                if (!isPaused) showSlides();
+            }
+
+            showSlides(); // Start the slideshow
+
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            } else {
+                console.log('Hamburger or navMenu not found');
+            }
+        });
+    </script>
+</body>
+</html>

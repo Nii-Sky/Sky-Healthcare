@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Health Care - Koforidua Pharmacy Browse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #007bff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            list-style: none;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        .nav-left button, .nav-right button {
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-left button:hover, .nav-right button:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 0.2rem;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 0.3rem 0.5rem;
+            font-size: 1rem;
+            width: 200px;
+        }
+
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            padding: 0.3rem;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 1rem;
+        }
+
+        .search-container button:hover {
+            color: #0056b3;
+            transform: none;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            max-height: 80px;
+            width: auto;
+            max-width: 300px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo-left {
+            max-height: 120px;
+            width: auto;
+            max-width: 400px;
+            margin-left: 2rem;
+            flex-shrink: 0;
+        }
+
+        .header-logo-right {
+            max-height: 120px;
+            width: auto;
+            max-width: 400px;
+            margin-right: 2rem;
+            flex-shrink: 0;
+        }
+
+        .header-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .group-text {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.25rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .back-button {
+            display: block;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838;
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .store-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .store-card:hover {
+            transform: scale(1.05);
+        }
+
+        .store-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .store-card h4 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .store-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+
+        .store-card .rating {
+            font-size: 1rem;
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+
+        .store-card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .store-card button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #ddd;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                gap: 0.5rem;
+                padding: 0.5rem;
+            }
+
+            .nav-left, .nav-right {
+                gap: 0.3rem;
+            }
+
+            .nav-left button, .nav-right button {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.6rem;
+            }
+
+            .search-container input {
+                width: 100px;
+                font-size: 0.85rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .search-container button {
+                padding: 0.2rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-logo {
+                max-height: 40px;
+                max-width: 150px;
+            }
+
+            header {
+                flex-direction: row;
+                padding: 0.5rem 0;
+            }
+
+            .header-logo-left {
+                max-height: 80px;
+                max-width: 150px;
+                margin-left: 0.5rem;
+            }
+
+            .header-logo-right {
+                max-height: 80px;
+                max-width: 150px;
+                margin-right: 0.5rem;
+            }
+
+            .header-text-container {
+                max-width: 250px;
+                font-size: 0.9rem;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .group-text {
+                font-size: 0.8rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .back-button {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .store-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .store-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-left">
+                <li><button onclick="window.location.href='index.html'">Home</button></li>
+                <li><button onclick="window.location.href='koforidua-pharmacy.html'">Stores</button></li>
+                <li><button onclick="window.location.href='#orders'">Orders</button></li>
+            </ul>
+            <div class="nav-logo-container">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="https://via.placeholder.com/300x80" alt="Sky Health Care Navigation Logo" class="nav-logo">
+                </a>
+            </div>
+            <ul class="nav-right">
+                <li>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search stores..." oninput="searchStores()">
+                        <button>🔍</button>
+                    </div>
+                </li>
+                <li><button onclick="window.location.href='#signup'">Sign Up</button></li>
+                <li><button onclick="window.location.href='#login'">Login</button></li>
+                <li><button onclick="window.location.href='#logout'">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Left" class="header-logo-left">
+        <div class="header-text-container">
+            <div class="group-text">(GROUP-2)</div>
+            <h1>Sky Health Care - Koforidua Pharmacy</h1>
+        </div>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Right" class="header-logo-right">
+    </header>
+
+    <div class="main-content">
+        <a href="index.html" class="back-button">Back to Home</a>
+        <h2>Browse Stores in Eastern Region</h2>
+        <div class="store-grid" id="storeGrid">
+            <!-- Store cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Contact us: info@skyhealthcare.com.gh | Phone: +233-555-1234</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank">🌐</a>
+                <a href="https://twitter.com" target="_blank">🐦</a>
+                <a href="https://instagram.com" target="_blank">📸</a>
+            </div>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>© 2025 Sky Health Care. All rights reserved. | Serving Greater Accra, Ashanti, Central, Western (Takoradi), Eastern, Volta Regions</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sample data for 27 placeholder stores in Eastern Region
+            const stores = Array.from({ length: 27 }, (_, i) => ({
+                name: `Store ${i + 1} - Koforidua Pharmacy ${i + 1}`,
+                description: `Pharmacy or herbal store in Eastern Region offering medications and remedies.`,
+                image: "https://via.placeholder.com/150",
+                rating: (Math.random() * (5 - 3.5) + 3.5).toFixed(1)
+            }));
+
+            function displayStores(storeList) {
+                const storeGrid = document.getElementById('storeGrid');
+                storeGrid.innerHTML = '';
+                storeList.forEach(store => {
+                    const storeCard = document.createElement('div');
+                    storeCard.classList.add('store-card');
+                    storeCard.innerHTML = `
+                        <img src="${store.image}" alt="${store.name}">
+                        <h4>${store.name}</h4>
+                        <p>${store.description}</p>
+                        <div class="rating">★${store.rating}</div>
+                        <button onclick="alert('Selected ${store.name} for shopping!')">Select Store</button>
+                    `;
+                    storeGrid.appendChild(storeCard);
+                });
+            }
+
+            function searchStores() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const filteredStores = stores.filter(store =>
+                    store.name.toLowerCase().includes(searchInput) ||
+                    store.description.toLowerCase().includes(searchInput)
+                );
+                displayStores(filteredStores.length > 0 ? filteredStores : stores);
+            }
+
+            // Initial display of all stores
+            displayStores(stores);
+            document.getElementById('searchInput').addEventListener('input', searchStores);
+        });
+    </script>
+</body>
+</html>

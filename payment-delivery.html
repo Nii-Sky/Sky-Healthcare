@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your order at Ernest Chemists by providing delivery address and payment details, supporting Mobile Money and Credit Card payments.">
+    <meta name="keywords" content="Ernest Chemists, delivery, payment, Mobile Money, Credit Card, Greater Accra">
+    <title>Ernest Chemists - Delivery and Payment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #007bff;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu button {
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-menu button:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 0.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 0.3rem 0.5rem;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            padding: 0.3rem;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+
+        .search-container button:hover {
+            color: #0056b3;
+            transform: none;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            max-height: 60px;
+            width: auto;
+            max-width: 200px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #ffffff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo-left {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-left: 0.5rem;
+        }
+
+        .header-logo-right {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-right: 0.5rem;
+        }
+
+        .header-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 0.5rem;
+        }
+
+        .group-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .back-button {
+            display: block;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838;
+        }
+
+        .form-section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+        .form-group select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path d="M0 0h10l-5 5z" fill="%23333"/></svg>') no-repeat right 0.5rem center;
+            background-size: 10px;
+        }
+
+        .confirm-button, .submit-payment {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .confirm-button:hover, .submit-payment:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .confirm-button:active, .submit-payment:active {
+            background-color: #1e7e34;
+            transform: scale(0.95);
+        }
+
+        #payment-section {
+            display: none;
+        }
+
+        .payment-option {
+            margin-bottom: 1rem;
+        }
+
+        .payment-option label {
+            font-size: 0.9rem;
+            color: #333;
+            margin-left: 0.5rem;
+        }
+
+        .payment-details {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .cart-summary {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summary h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        #cart-items {
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item h4 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .cart-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        #cart-total {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1rem;
+            margin: 0 0.4rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #ddd;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.4rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 1rem;
+                padding: 0.2rem;
+                margin-left: 0.3rem;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0.5rem;
+                background-color: #007bff;
+                flex-direction: column;
+                width: 150px;
+                padding: 0.5rem;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu button {
+                width: 100%;
+                margin: 0.2rem 0;
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .search-container input {
+                width: 80px;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .search-container button {
+                padding: 0.2rem;
+                font-size: 0.75rem;
+            }
+
+            .nav-logo {
+                max-height: 30px;
+                max-width: 100px;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .header-logo-left {
+                max-height: 40px;
+                max-width: 100px;
+                margin-left: 0.3rem;
+            }
+
+            .header-logo-right {
+                max-height: 40px;
+                max-width: 100px;
+                margin-right: 0.3rem;
+            }
+
+            .header-text-container {
+                margin: 0 0.3rem;
+            }
+
+            .group-text {
+                font-size: 0.6rem;
+            }
+
+            header h1 {
+                font-size: 1rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .form-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .form-group label {
+                font-size: 0.8rem;
+            }
+
+            .form-group input, .form-group select {
+                font-size: 0.8rem;
+                padding: 0.4rem;
+            }
+
+            .confirm-button, .submit-payment {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+            <div class="nav-menu">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='ernest-chemists-products-services.html'">Products</button>
+                <button onclick="alert('Logout clicked')">Logout</button>
+            </div>
+            <div class="nav-logo-container">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="https://via.placeholder.com/300x80" alt="Sky Health Care Navigation Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search products..." disabled aria-label="Search disabled on this page">
+                <button aria-label="Search" disabled>🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Left" class="header-logo-left">
+        <div class="header-text-container">
+            <div class="group-text">(GROUP-2)</div>
+            <h1>Ernest Chemists - Delivery and Payment</h1>
+        </div>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Right" class="header-logo-right">
+    </header>
+
+    <div class="main-content">
+        <a href="ernest-chemists-products-services.html" class="back-button">Back to Products</a>
+        <h2>Complete Your Order</h2>
+
+        <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <div id="cart-items"></div>
+            <p id="cart-total">Total Items: 0 | Total Amount: ₵0.00</p>
+        </div>
+
+        <div class="form-section" id="delivery-section">
+            <h3>Delivery Address</h3>
+            <div class="form-group">
+                <label for="full-name">Full Name *</label>
+                <input type="text" id="full-name" required aria-required="true" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" required aria-required="true" placeholder="e.g., +233 24 123 4567">
+            </div>
+            <div class="form-group">
+                <label for="address-line1">Address Line 1 *</label>
+                <input type="text" id="address-line1" required aria-required="true" placeholder="Street address, house number">
+            </div>
+            <div class="form-group">
+                <label for="address-line2">Address Line 2</label>
+                <input type="text" id="address-line2" placeholder="Apartment, suite, etc. (optional)">
+            </div>
+            <div class="form-group">
+                <label for="city">City/Town *</label>
+                <input type="text" id="city" required aria-required="true" placeholder="Enter your city or town">
+            </div>
+            <div class="form-group">
+                <label for="region">Region *</label>
+                <select id="region" required aria-required="true">
+                    <option value="" disabled selected>Select a region</option>
+                    <option value="Greater Accra">Greater Accra</option>
+                    <option value="Ashanti">Ashanti</option>
+                    <option value="Central">Central</option>
+                    <option value="Western">Western</option>
+                    <option value="Eastern">Eastern</option>
+                    <option value="Volta">Volta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="delivery-instructions">Delivery Instructions</label>
+                <input type="text" id="delivery-instructions" placeholder="e.g., Leave at front gate (optional)">
+            </div>
+            <button class="confirm-button" onclick="confirmDelivery()">Confirm Delivery Address</button>
+        </div>
+
+        <div class="form-section" id="payment-section">
+            <h3>Payment Details</h3>
+            <div class="payment-option">
+                <input type="radio" id="mobile-money" name="payment-method" value="mobile-money" checked>
+                <label for="mobile-money">Mobile Money</label>
+                <div id="mobile-money-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="mobile-network">Mobile Network *</label>
+                        <select id="mobile-network" required aria-required="true">
+                            <option value="" disabled selected>Select a network</option>
+                            <option value="MTN">MTN</option>
+                            <option value="Vodafone">Vodafone</option>
+                            <option value="AirtelTigo">AirtelTigo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile-number">Mobile Money Number *</label>
+                        <input type="tel" id="mobile-number" required aria-required="true" placeholder="e.g., +233 24 123 4567">
+                    </div>
+                </div>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+                <label for="credit-card">Credit Card</label>
+                <div id="credit-card-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="card-number">Card Number *</label>
+                        <input type="text" id="card-number" required aria-required="true" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-holder">Card Holder Name *</label>
+                        <input type="text" id="card-holder" required aria-required="true" placeholder="Enter name on card">
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry Date *</label>
+                        <input type="text" id="expiry-date" required aria-required="true" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV *</label>
+                        <input type="text" id="cvv" required aria-required="true" placeholder="123">
+                    </div>
+                </div>
+            </div>
+            <button class="submit-payment" onclick="submitPayment()">Submit Payment</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Contact us: info@skyhealthcare.com.gh | Phone: +233-555-1234</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">🌐</a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">📸</a>
+            </div>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>© 2025 Sky Health Care. All rights reserved. | Serving Greater Accra, Ashanti, Central, Western (Takoradi), Eastern, Volta Regions</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            } else {
+                console.log('Hamburger or navMenu not found');
+            }
+
+            // Update Cart Display
+            function updateCartDisplay() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let cartItemsDiv = document.getElementById('cart-items');
+                cartItemsDiv.innerHTML = '';
+                let totalItems = 0;
+                let totalAmount = 0;
+                cart.forEach((item) => {
+                    let subtotal = item.price * item.quantity;
+                    totalItems += item.quantity;
+                    totalAmount += subtotal;
+                    let itemDiv = document.createElement('div');
+                    itemDiv.classList.add('cart-item');
+                    itemDiv.innerHTML = `
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity} | Subtotal: ₵${subtotal.toFixed(2)}</p>
+                    `;
+                    cartItemsDiv.appendChild(itemDiv);
+                });
+                document.getElementById('cart-total').textContent = `Total Items: ${totalItems} | Total Amount: ₵${totalAmount.toFixed(2)}`;
+                if (totalItems === 0) {
+                    document.getElementById('delivery-section').style.display = 'none';
+                    document.getElementById('payment-section').style.display = 'none';
+                    alert('Your cart is empty. Please add items to proceed.');
+                    window.location.href = 'ernest-chemists-products-services.html';
+                }
+            }
+
+            // Delivery Address Form Validation and Confirmation
+            window.confirmDelivery = function() {
+                const fullName = document.getElementById('full-name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const addressLine1 = document.getElementById('address-line1').value.trim();
+                const city = document.getElementById('city').value.trim();
+                const region = document.getElementById('region').value;
+
+                if (!fullName || !phone || !addressLine1 || !city || !region) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                if (!/^\+233\d{9}$/.test(phone)) {
+                    alert('Please enter a valid Ghanaian phone number (e.g., +233241234567).');
+                    return;
+                }
+
+                const address = {
+                    fullName,
+                    phone,
+                    addressLine1,
+                    addressLine2: document.getElementById('address-line2').value.trim(),
+                    city,
+                    region,
+                    deliveryInstructions: document.getElementById('delivery-instructions').value.trim()
+                };
+
+                localStorage.setItem('deliveryAddress', JSON.stringify(address));
+                alert(`Delivery address confirmed for ${fullName} at ${addressLine1}, ${city}, ${region}.`);
+                document.getElementById('delivery-section').style.display = 'none';
+                document.getElementById('payment-section').style.display = 'block';
+                document.getElementById('payment-section').scrollIntoView({ behavior: 'smooth' });
+            };
+
+            // Payment Method Toggle
+            const mobileMoneyRadio = document.getElementById('mobile-money');
+            const creditCardRadio = document.getElementById('credit-card');
+            const mobileMoneyDetails = document.getElementById('mobile-money-details');
+            const creditCardDetails = document.getElementById('credit-card-details');
+
+            mobileMoneyRadio.addEventListener('change', () => {
+                mobileMoneyDetails.style.display = 'block';
+                creditCardDetails.style.display = 'none';
+            });
+
+            creditCardRadio.addEventListener('change', () => {
+                mobileMoneyDetails.style.display = 'none';
+                creditCardDetails.style.display = 'block';
+            });
+
+            // Initialize payment method display
+            mobileMoneyDetails.style.display = 'block';
+            creditCardDetails.style.display = 'none';
+
+            // Payment Submission
+            window.submitPayment = function() {
+                const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+                if (paymentMethod === 'mobile-money') {
+                    const mobileNetwork = document.getElementById('mobile-network').value;
+                    const mobileNumber = document.getElementById('mobile-number').value.trim();
+
+                    if (!mobileNetwork || !mobileNumber) {
+                        alert('Please fill in all Mobile Money fields.');
+                        return;
+                    }
+
+                    if (!/^\+233\d{9}$/.test(mobileNumber)) {
+                        alert('Please enter a valid Mobile Money number (e.g., +233241234567).');
+                        return;
+                    }
+
+                    alert(`Payment submitted via Mobile Money (${mobileNetwork}) for ${mobileNumber}.`);
+                } else if (paymentMethod === 'credit-card') {
+                    const cardNumber = document.getElementById('card-number').value.trim();
+                    const cardHolder = document.getElementById('card-holder').value.trim();
+                    const expiryDate = document.getElementById('expiry-date').value.trim();
+                    const cvv = document.getElementById('cvv').value.trim();
+
+                    if (!cardNumber || !cardHolder || !expiryDate || !cvv) {
+                        alert('Please fill in all Credit Card fields.');
+                        return;
+                    }
+
+                    if (!/^\d{16}$/.test(cardNumber.replace(/\s/g, ''))) {
+                        alert('Please enter a valid 16-digit card number.');
+                        return;
+                    }
+
+                    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+                        alert('Please enter a valid expiry date (MM/YY).');
+                        return;
+                    }
+
+                    if (!/^\d{3,4}$/.test(cvv)) {
+                        alert('Please enter a valid CVV (3 or 4 digits).');
+                        return;
+                    }
+
+                    alert(`Payment submitted via Credit Card for ${cardHolder}.`);
+                }
+
+                // Clear cart and reset
+                localStorage.removeItem('cart');
+                localStorage.removeItem('deliveryAddress');
+                alert('Order placed successfully! You will be redirected to the products page.');
+                window.location.href = 'ernest_chemist_store.html';
+            };
+
+            // Initial cart display
+            updateCartDisplay();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore herbal products and spiritual services at Top Herbal Clinic in Greater Accra, including pain relief, malaria tonics, and more.">
+    <meta name="keywords" content="Top Herbal Clinic, Accra Central, herbal clinic, Greater Accra, herbal products, spiritual services, prices">
+    <title>Top Herbal Clinic - Products and Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu button {
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-menu button:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 0.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 0.3rem 0.5rem;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            padding: 0.3rem;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+
+        .search-container button:hover {
+            color: #0056b3;
+            transform: none;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            max-height: 60px;
+            width: auto;
+            max-width: 200px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #ffffff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo-left {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-left: 0.5rem;
+        }
+
+        .header-logo-right {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-right: 0.5rem;
+        }
+
+        .header-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 0.5rem;
+        }
+
+        .group-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .back-button {
+            display: block;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838;
+        }
+
+        .category-section {
+            margin-bottom: 2rem;
+        }
+
+        .category-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-card h4 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .product-card .price {
+            font-size: 1rem;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .product-card button:active {
+            background-color: #28a745;
+            transform: scale(0.95);
+        }
+
+        .cart-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item h4 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .cart-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cart-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .cart-item button:hover {
+            background-color: #c82333;
+        }
+
+        #cart-total {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        #proceed-payment {
+            display: none;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        #proceed-payment:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1rem;
+            margin: 0 0.4rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #ddd;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.4rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 1rem;
+                padding: 0.2rem;
+                margin-left: 0.3rem;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0.5rem;
+                background-color: #007bff;
+                flex-direction: column;
+                width: 150px;
+                padding: 0.5rem;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu button {
+                width: 100%;
+                margin: 0.2rem 0;
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .search-container input {
+                width: 80px;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .search-container button {
+                padding: 0.2rem;
+                font-size: 0.75rem;
+            }
+
+            .nav-logo {
+                max-height: 30px;
+                max-width: 100px;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .header-logo-left {
+                max-height: 40px;
+                max-width: 100px;
+                margin-left: 0.3rem;
+            }
+
+            .header-logo-right {
+                max-height: 40px;
+                max-width: 100px;
+                margin-right: 0.3rem;
+            }
+
+            .header-text-container {
+                margin: 0 0.3rem;
+            }
+
+            .group-text {
+                font-size: 0.6rem;
+            }
+
+            header h1 {
+                font-size: 1rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .category-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card {
+                width: 100%;
+            }
+
+            .back-button {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .cart-section {
+                padding: 0.5rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item button {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+            <div class="nav-menu">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="document.getElementById('cart-section').scrollIntoView({behavior: 'smooth'})">Cart</button>
+                 <button onclick="window.location.href='login.html'">logout</button>
+            </div>
+            <div class="nav-logo-container">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="https://via.placeholder.com/300x80" alt="Sky Health Care Navigation Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search products..." oninput="searchProducts()" aria-label="Search for products">
+                <button aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Left" class="header-logo-left">
+        <div class="header-text-container">
+            <div class="group-text">(GROUP-2)</div>
+            <h1>Top Herbal Clinic - Products and Services</h1>
+        </div>
+        <img src="https://via.placeholder.com/400x120" alt="Sky Health Care Logo Right" class="header-logo-right">
+    </header>
+
+    <div class="main-content">
+        <a href="herbal-hub-accra.html" class="back-button">Back to Herbal Hub Accra</a>
+        <h2>Explore Products and Services at Top Herbal Clinic</h2>
+
+        <div class="category-section" id="pain-relief-ointment">
+            <h3>Pain and Relief Ointment</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Joint+Relief+Ointment" alt="Joint Relief Ointment">
+                    <h4>Joint Relief Ointment 50g</h4>
+                    <p>Herbal ointment for joint and muscle pain relief.</p>
+                    <div class="price">₵28.00</div>
+                    <button onclick="addToCart('Joint Relief Ointment', '28.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Back+Pain+Balm" alt="Back Pain Balm">
+                    <h4>Back Pain Balm 30g</h4>
+                    <p>Soothes chronic back pain with natural herbs.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Back Pain Balm', '22.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Arthritis+Cream" alt="Arthritis Cream">
+                    <h4>Arthritis Cream 40g</h4>
+                    <p>Reduces inflammation and arthritis discomfort.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Arthritis Cream', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Muscle+Rub" alt="Muscle Rub">
+                    <h4>Muscle Rub 50g</h4>
+                    <p>Relieves muscle soreness and stiffness.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Muscle Rub', '25.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="malaria-tonics">
+            <h3>Malaria Tonics</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Malaria+Herbal+Tonic" alt="Malaria Herbal Tonic">
+                    <h4>Malaria Herbal Tonic 200ml</h4>
+                    <p>Supports recovery from malaria symptoms.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Malaria Herbal Tonic', '35.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Fever+Cleanse+Tonic" alt="Fever Cleanse Tonic">
+                    <h4>Fever Cleanse Tonic 150ml</h4>
+                    <p>Reduces fever associated with malaria.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Fever Cleanse Tonic', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Anti-Malarial+Syrup" alt="Anti-Malarial Syrup">
+                    <h4>Anti-Malarial Syrup 100ml</h4>
+                    <p>Herbal syrup for malaria prevention and relief.</p>
+                    <div class="price">₵28.00</div>
+                    <button onclick="addToCart('Anti-Malarial Syrup', '28.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Malaria+Blend" alt="Herbal Malaria Blend">
+                    <h4>Herbal Malaria Blend 250ml</h4>
+                    <p>Boosts immunity against malaria.</p>
+                    <div class="price">₵40.00</div>
+                    <button onclick="addToCart('Herbal Malaria Blend', '40.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="immune-system-boost">
+            <h3>Herbal Immune System Boost</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Immune+Booster+Tonic" alt="Immune Booster Tonic">
+                    <h4>Immune Booster Tonic 200ml</h4>
+                    <p>Enhances immune system with natural herbs.</p>
+                    <div class="price">₵32.00</div>
+                    <button onclick="addToCart('Immune Booster Tonic', '32.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Immunity+Tea" alt="Herbal Immunity Tea">
+                    <h4>Herbal Immunity Tea 50g</h4>
+                    <p>Tea blend to strengthen immunity.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Herbal Immunity Tea', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Vitamin+C+Herbal+Syrup" alt="Vitamin C Herbal Syrup">
+                    <h4>Vitamin C Herbal Syrup 150ml</h4>
+                    <p>Supports immune health with vitamin C and herbs.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Vitamin C Herbal Syrup', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Echinacea+Capsules" alt="Echinacea Capsules">
+                    <h4>Echinacea Capsules 30's</h4>
+                    <p>Boosts immunity and fights infections.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Echinacea Capsules', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Detox+Tonic" alt="Herbal Detox Tonic">
+                    <h4>Herbal Detox Tonic 200ml</h4>
+                    <p>Detoxifies and supports immune function.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Herbal Detox Tonic', '35.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="herbal-dental-products">
+            <h3>Herbal Dental Products</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Toothpaste" alt="Herbal Toothpaste">
+                    <h4>Herbal Toothpaste 100g</h4>
+                    <p>Natural toothpaste for oral health.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Herbal Toothpaste', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Mouthwash+Herbal" alt="Mouthwash Herbal">
+                    <h4>Herbal Mouthwash 200ml</h4>
+                    <p>Freshens breath and fights bacteria.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Herbal Mouthwash', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Clove+Tooth+Powder" alt="Clove Tooth Powder">
+                    <h4>Clove Tooth Powder 50g</h4>
+                    <p>Herbal powder for strong teeth and gums.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Clove Tooth Powder', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Neem+Dental+Stick" alt="Neem Dental Stick">
+                    <h4>Neem Dental Stick 10's</h4>
+                    <p>Traditional neem sticks for oral hygiene.</p>
+                    <div class="price">₵12.00</div>
+                    <button onclick="addToCart('Neem Dental Stick', '12.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="herbal-eye-products">
+            <h3>Herbal Eye Products</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Eye+Relief+Drops" alt="Eye Relief Drops">
+                    <h4>Eye Relief Drops 10ml</h4>
+                    <p>Herbal drops to soothe eye irritation.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Eye Relief Drops', '22.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Eye+Tonic" alt="Herbal Eye Tonic">
+                    <h4>Herbal Eye Tonic 100ml</h4>
+                    <p>Supports eye health and clarity.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Herbal Eye Tonic', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Eye+Cleansing+Solution" alt="Eye Cleansing Solution">
+                    <h4>Eye Cleansing Solution 50ml</h4>
+                    <p>Cleanses and refreshes tired eyes.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Eye Cleansing Solution', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Vision+Support+Capsules" alt="Vision Support Capsules">
+                    <h4>Vision Support Capsules 30's</h4>
+                    <p>Herbal capsules for improved vision.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Vision Support Capsules', '30.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="herbal-skin-care">
+            <h3>Herbal Skin Care Products</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Shea+Butter+Cream" alt="Shea Butter Cream">
+                    <h4>Shea Butter Cream 100g</h4>
+                    <p>Moisturizes and heals dry skin.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Shea Butter Cream', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Aloe+Vera+Gel" alt="Aloe Vera Gel">
+                    <h4>Aloe Vera Gel 150ml</h4>
+                    <p>Soothes and hydrates skin naturally.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Aloe Vera Gel', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Face+Mask" alt="Herbal Face Mask">
+                    <h4>Herbal Face Mask 50g</h4>
+                    <p>Cleanses and rejuvenates facial skin.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Herbal Face Mask', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Neem+Skin+Ointment" alt="Neem Skin Ointment">
+                    <h4>Neem Skin Ointment 40g</h4>
+                    <p>Treats skin infections and irritations.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Neem Skin Ointment', '22.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Herbal+Body+Lotion" alt="Herbal Body Lotion">
+                    <h4>Herbal Body Lotion 200ml</h4>
+                    <p>Nourishes and softens skin with herbs.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Herbal Body Lotion', '30.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="spiritual-services">
+            <h3>Spiritual Services</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x150?text=Spiritual+Service+Guide" alt="Spiritual Service Guide">
+                    <h4>Spiritual Service Guide</h4>
+                    <p>Personalized spiritual consultation and guidance.</p>
+                    <div class="price">₵50.00</div>
+                    <button onclick="addToCart('Spiritual Service Guide', '50.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-section" id="cart-section">
+            <h3>Your Cart</h3>
+            <div id="cart-items"></div>
+            <p id="cart-total">Total Items: 0 | Total Amount: ₵0.00</p>
+            <button id="proceed-payment" style="display:none;" onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Contact us: info@skyhealthcare.com.gh | Phone: +233-555-1234</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">🌐</a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">📸</a>
+            </div>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>© 2025 Sky Health Care. All rights reserved. | Serving Greater Accra, Ashanti, Central, Western (Takoradi), Eastern, Volta Regions</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            } else {
+                console.log('Hamburger or navMenu not found');
+            }
+
+            function searchProducts() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const productCards = document.querySelectorAll('.product-card');
+                productCards.forEach(card => {
+                    const name = card.querySelector('h4').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    if (name.includes(searchInput) || description.includes(searchInput)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            document.getElementById('searchInput').addEventListener('input', searchProducts);
+
+            window.addToCart = function(itemName, price) {
+                price = parseFloat(price);
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let existingItem = cart.find(item => item.name === itemName);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name: itemName, price: price, quantity: 1 });
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            };
+
+            window.removeFromCart = function(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            };
+
+            function updateCartDisplay() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let cartItemsDiv = document.getElementById('cart-items');
+                cartItemsDiv.innerHTML = '';
+                let totalItems = 0;
+                let totalAmount = 0;
+                cart.forEach((item, index) => {
+                    let subtotal = item.price * item.quantity;
+                    totalItems += item.quantity;
+                    totalAmount += subtotal;
+                    let itemDiv = document.createElement('div');
+                    itemDiv.classList.add('cart-item');
+                    itemDiv.innerHTML = `
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity} | Subtotal: ₵${subtotal.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsDiv.appendChild(itemDiv);
+                });
+                document.getElementById('cart-total').textContent = `Total Items: ${totalItems} | Total Amount: ₵${totalAmount.toFixed(2)}`;
+                let proceedBtn = document.getElementById('proceed-payment');
+                proceedBtn.style.display = totalItems > 0 ? 'block' : 'none';
+            }
+
+            window.proceedToPayment = function() {
+                window.location.href = 'payment-delivery.html';
+            };
+
+            updateCartDisplay();
+        });
+    </script>
+</body>
+</html>

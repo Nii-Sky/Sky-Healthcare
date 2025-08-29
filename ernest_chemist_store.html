@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore products and services at Ernest Chemists in Greater Accra, including medications, supplements, and health services with prices.">
+    <meta name="keywords" content="Ernest Chemists, pharmacy, Greater Accra, products, services, prices">
+    <title>Ernest Chemists - Products and Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #007bff;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu button {
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-menu button:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 0.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 0.3rem 0.5rem;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            padding: 0.3rem;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+
+        .search-container button:hover {
+            color: #0056b3;
+            transform: none;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            max-height: 60px;
+            width: auto;
+            max-width: 200px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #ffffff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo-left {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-left: 0.5rem;
+        }
+
+        .header-logo-right {
+            max-height: 80px;
+            width: auto;
+            max-width: 250px;
+            margin-right: 0.5rem;
+        }
+
+        .header-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 0.5rem;
+        }
+
+        .group-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .back-button {
+            display: block;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838;
+        }
+
+        .category-section {
+            margin-bottom: 2rem;
+        }
+
+        .category-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-card h4 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .product-card .price {
+            font-size: 1rem;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .product-card button:active {
+            background-color: #28a745;
+            transform: scale(0.95);
+        }
+
+        /* Cart Section */
+        .cart-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item h4 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .cart-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cart-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .cart-item button:hover {
+            background-color: #c82333;
+        }
+
+        #cart-total {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        #proceed-payment {
+            display: none;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        #proceed-payment:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1rem;
+            margin: 0 0.4rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #ddd;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.4rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 1rem;
+                padding: 0.2rem;
+                margin-left: 0.3rem;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0.5rem;
+                background-color: #007bff;
+                flex-direction: column;
+                width: 150px;
+                padding: 0.5rem;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu button {
+                width: 100%;
+                margin: 0.2rem 0;
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .search-container input {
+                width: 80px;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .search-container button {
+                padding: 0.2rem;
+                font-size: 0.75rem;
+            }
+
+            .nav-logo {
+                max-height: 30px;
+                max-width: 100px;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .header-logo-left {
+                max-height: 40px;
+                max-width: 100px;
+                margin-left: 0.3rem;
+            }
+
+            .header-logo-right {
+                max-height: 40px;
+                max-width: 100px;
+                margin-right: 0.3rem;
+            }
+
+            .header-text-container {
+                margin: 0 0.3rem;
+            }
+
+            .group-text {
+                font-size: 0.6rem;
+            }
+
+            header h1 {
+                font-size: 1rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .category-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card {
+                width: 100%;
+            }
+
+            .back-button {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .cart-section {
+                padding: 0.5rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item button {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+            <div class="nav-menu">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="document.getElementById('cart-section').scrollIntoView({behavior: 'smooth'})">Cart</button>
+                <button onclick="window.location.href='login.html'">logout</button>
+            </div>
+            <div class="nav-logo-container">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="imagefolder/skyblogo.png" alt="Sky Health Care Navigation Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search products..." oninput="searchProducts()" aria-label="Search for products">
+                <button aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <img src="imagefolder/logo001.jpg" alt="Sky Health Care Logo Left" class="header-logo-left">
+        <div class="header-text-container">
+            <div class="group-text">(GROUP-2)</div>
+            <h1>Ernest Chemists - Products and Services</h1>
+        </div>
+        <img src="imagefolder/logo 002.jpg" alt="Sky Health Care Logo Right" class="header-logo-right">
+    </header>
+
+    <div class="main-content">
+        <a href="accra-central-pharmacy.html" class="back-button">Back to Accra Pharmacies</a>
+        <h2>Explore Products and Services at Ernest Chemists</h2>
+
+        <div class="category-section" id="allergy">
+            <h3>Allergy</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/Piriton-Hayfever-&-Allergy-Tablets.jpg" alt="Cetirizine Tablets">
+                    <h4>Cetirizine 10mg Tablets 30's</h4>
+                    <p>Relieves allergy symptoms like sneezing and itching.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Cetirizine Tablets', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/X' mox.jpg" alt="Loratadine Syrup">
+                    <h4>Loratadine Syrup 100ml</h4>
+                    <p>Non-drowsy relief for allergic rhinitis.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Loratadine Syrup', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/AGUE NIL SYRUP.jpg" alt="Antihistamine Cream">
+                    <h4>Antihistamine Cream 30g</h4>
+                    <p>Soothes skin allergies and rashes.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Antihistamine Cream', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/ACTIFED DRY COUGH & COLD SYRUP.jpg" alt="Nasal Spray">
+                    <h4>Allergy Nasal Spray 15ml</h4>
+                    <p>Relieves nasal congestion from allergies.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Nasal Spray', '35.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vitamines.webp" alt="Fexofenadine Tablets">
+                    <h4>Fexofenadine 120mg Tablets 10's</h4>
+                    <p>Fast-acting relief for seasonal allergies.</p>
+                    <div class="price">₵40.00</div>
+                    <button onclick="addToCart('Fexofenadine Tablets', '40.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="hayfever">
+            <h3>Hayfever</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/Piriton-Hayfever-&-Allergy-Tablets.jpg" alt="Hayfever Tablets">
+                    <h4>Hayfever Relief Tablets 30's</h4>
+                    <p>Reduces hayfever symptoms like sneezing and watery eyes.</p>
+                    <div class="price">₵28.00</div>
+                    <button onclick="addToCart('Hayfever Tablets', '28.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/FORTE VITAMIN C.jpg" alt="Eye Drops">
+                    <h4>Anti-Allergy Eye Drops 10ml</h4>
+                    <p>Relieves itchy and red eyes from hayfever.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Eye Drops', '22.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vita.webp" alt="Nasal Spray Hayfever">
+                    <h4>Hayfever Nasal Spray 20ml</h4>
+                    <p>Clears nasal passages for hayfever relief.</p>
+                    <div class="price">₵32.00</div>
+                    <button onclick="addToCart('Nasal Spray Hayfever', '32.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vita2.webp" alt="Antihistamine Syrup">
+                    <h4>Antihistamine Syrup 100ml</h4>
+                    <p>Child-friendly hayfever relief syrup.</p>
+                    <div class="price">₵27.00</div>
+                    <button onclick="addToCart('Antihistamine Syrup', '27.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/pain.jpeg"alt="Allergy Relief Tablets">
+                    <h4>Allergy Relief Tablets 20's</h4>
+                    <p>Long-lasting relief from hayfever symptoms.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Allergy Relief Tablets', '35.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="baby-child-health">
+            <h3>Baby and Child Health</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/baby_grip.jpg" alt="Auntie Mary Gripewater">
+                    <h4>Auntie Mary Gripewater 150ml</h4>
+                    <p>Relieves colic and wind in infants.</p>
+                    <div class="price">₵27.42</div>
+                    <button onclick="addToCart('Auntie Mary Gripewater', '27.42')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/PARACETAMOL SYRUP (FOR KIDS).jpg" alt="Paracetamol Syrup">
+                    <h4>Paracetamol Syrup 120ml</h4>
+                    <p>Pain and fever relief for children.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Paracetamol Syrup', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/baby_d.jpg" alt="Diaper Rash Cream">
+                    <h4>Diaper Rash Cream 50g</h4>
+                    <p>Soothes and protects baby’s skin.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Diaper Rash Cream', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vittaa.webp" alt="Vitamin D Drops">
+                    <h4>Vitamin D Drops 30ml</h4>
+                    <p>Supports healthy bone development in infants.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Vitamin D Drops', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/baby2.jpg" alt="Teething Gel">
+                    <h4>Teething Gel 15ml</h4>
+                    <p>Relieves teething pain for babies.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Teething Gel', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/baby.jpg" alt="Pediatric Electrolyte">
+                    <h4>Pediatric Electrolyte Solution 500ml</h4>
+                    <p>Rehydrates children during illness.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Pediatric Electrolyte', '25.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="cough-cold-flu">
+            <h3>Cough, Cold, and Flu</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/cough.webp" alt="Cough Syrup">
+                    <h4>Cough Syrup 100ml</h4>
+                    <p>Relieves dry and chesty coughs.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Cough Syrup', '22.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/LEMSIP MAX COLD & FLUID CAPSULES.jpg" alt="Cold Relief Tablets">
+                    <h4>Cold Relief Tablets 12's</h4>
+                    <p>Eases cold and flu symptoms.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Cold Relief Tablets', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/nasal.webp" alt="Decongestant Nasal Spray">
+                    <h4>Decongestant Nasal Spray 15ml</h4>
+                    <p>Clears blocked nose from colds.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Decongestant Nasal Spray', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/TOB CEE.jpg" alt="Throat Lozenge">
+                    <h4>Throat Lozenges 24's</h4>
+                    <p>Soothes sore throats.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Throat Lozenge', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/flu.webp" alt="Flu Relief Powder">
+                    <h4>Flu Relief Powder 6's</h4>
+                    <p>Hot drink for flu symptom relief.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Flu Relief Powder', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/cough.webp" alt="Chest Rub">
+                    <h4>Chest Rub 50g</h4>
+                    <p>Relieves chest congestion.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Chest Rub', '20.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="ear-care">
+            <h3>Ear Care</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/ear_care.webp" alt="Ear Drops">
+                    <h4>Ear Drops 10ml</h4>
+                    <p>Softens earwax for easy removal.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Ear Drops', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/eardro.webp" alt="Ear Cleaning Solution">
+                    <h4>Ear Cleaning Solution 50ml</h4>
+                    <p>Cleans and soothes ear canal.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Ear Cleaning Solution', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/eeardo.webp" alt="Ear Plugs">
+                    <h4>Ear Plugs (Pair)</h4>
+                    <p>Protects ears from water and noise.</p>
+                    <div class="price">₵10.00</div>
+                    <button onclick="addToCart('Ear Plugs', '10.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/syrin.webp" alt="Ear Syringe">
+                    <h4>Ear Syringe Kit</h4>
+                    <p>Safe earwax removal tool.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Ear Syringe', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/ear infe.webp" alt="Ear Infection Drops">
+                    <h4>Ear Infection Drops 15ml</h4>
+                    <p>Treats minor ear infections.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Ear Infection Drops', '35.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="pain-relief">
+            <h3>Pain Relief</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/pain reli.webp" alt="Paracetamol Tablets">
+                    <h4>Paracetamol 500mg Tablets 16's</h4>
+                    <p>Relieves mild to moderate pain and fever.</p>
+                    <div class="price">₵10.00</div>
+                    <button onclick="addToCart('Paracetamol Tablets', '10.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/pain.jpeg" alt="Ibuprofen Tablets">
+                    <h4>Ibuprofen 400mg Tablets 12's</h4>
+                    <p>Reduces inflammation and pain.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Ibuprofen Tablets', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/painrr.png" alt="Topical Gel">
+                    <h4>Pain Relief Gel 50g</h4>
+                    <p>Topical relief for muscle and joint pain.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Topical Gel', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/panadol.webp" alt="Aspirin Tablets">
+                    <h4>Aspirin 300mg Tablets 24's</h4>
+                    <p>Relieves headaches and minor aches.</p>
+                    <div class="price">₵12.00</div>
+                    <button onclick="addToCart('Aspirin Tablets', '12.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/parace.webp" alt="Migraine Relief">
+                    <h4>Migraine Relief Tablets 10's</h4>
+                    <p>Targets migraine pain and nausea.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Migraine Relief', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/PARACETAMOL SYRUP (FOR KIDS).jpg" alt="Heat Patch">
+                    <h4>Heat Patch for Pain Relief</h4>
+                    <p>Provides soothing heat for muscle pain.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Heat Patch', '20.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="first-aid">
+            <h3>First Aid</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/first.webp" alt="Silver Sulfadiazine Cream">
+                    <h4>Silver Sulfadiazine Cream USP 50g</h4>
+                    <p>Topical cream for burn wound infections.</p>
+                    <div class="price">₵95.00</div>
+                    <button onclick="addToCart('Silver Sulfadiazine Cream', '95.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/Antiseptic.webp" alt="Antiseptic Solution">
+                    <h4>Antiseptic Solution 100ml</h4>
+                    <p>Cleans wounds to prevent infection.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Antiseptic Solution', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/bandage.webp" alt="Adhesive Bandages">
+                    <h4>Adhesive Bandages 50's</h4>
+                    <p>Protects minor cuts and scrapes.</p>
+                    <div class="price">₵10.00</div>
+                    <button onclick="addToCart('Adhesive Bandages', '10.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Gauze Pads">
+                    <h4>Gauze Pads 10's</h4>
+                    <p>Absorbent pads for wound dressing.</p>
+                    <div class="price">₵12.00</div>
+                    <button onclick="addToCart('Gauze Pads', '12.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="First Aid Kit">
+                    <h4>First Aid Kit (Small)</h4>
+                    <p>Essential supplies for minor injuries.</p>
+                    <div class="price">₵50.00</div>
+                    <button onclick="addToCart('First Aid Kit', '50.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Burn Gel">
+                    <h4>Burn Gel 25g</h4>
+                    <p>Cools and soothes minor burns.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Burn Gel', '20.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="oral-care">
+            <h3>Oral Care</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/oral p.webp" alt="Toothpaste">
+                    <h4>Fluoride Toothpaste 100g</h4>
+                    <p>Protects against cavities and strengthens enamel.</p>
+                    <div class="price">₵12.00</div>
+                    <button onclick="addToCart('Toothpaste', '12.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/oral.webp" alt="Mouthwash">
+                    <h4>Antiseptic Mouthwash 250ml</h4>
+                    <p>Freshens breath and kills bacteria.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Mouthwash', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/orall.webp" alt="Toothbrush">
+                    <h4>Soft Bristle Toothbrush</h4>
+                    <p>Gentle on gums, effective cleaning.</p>
+                    <div class="price">₵8.00</div>
+                    <button onclick="addToCart('Toothbrush', '8.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/oralll.webp" alt="Dental Floss">
+                    <h4>Dental Floss 50m</h4>
+                    <p>Removes plaque between teeth.</p>
+                    <div class="price">₵10.00</div>
+                    <button onclick="addToCart('Dental Floss', '10.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Mouth Gel">
+                    <h4>Mouth Ulcer Gel 10g</h4>
+                    <p>Relieves pain from mouth ulcers.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Mouth Gel', '15.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="sun-care">
+            <h3>Sun Care</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/sun.jpeg" alt="Sunscreen SPF50">
+                    <h4>Sunscreen SPF50 100ml</h4>
+                    <p>Protects skin from UV rays.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Sunscreen SPF50', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/suncare.webp" alt="After Sun Lotion">
+                    <h4>After Sun Lotion 200ml</h4>
+                    <p>Soothes and hydrates sun-exposed skin.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('After Sun Lotion', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/sunn.jpg" alt="Sunblock Cream">
+                    <h4>Sunblock Cream SPF30 50g</h4>
+                    <p>Broad-spectrum UV protection.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Sunblock Cream', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/suun.webp" alt="Lip Balm SPF">
+                    <h4>Lip Balm SPF15</h4>
+                    <p>Protects lips from sun damage.</p>
+                    <div class="price">₵10.00</div>
+                    <button onclick="addToCart('Lip Balm SPF', '10.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Sun Relief Gel">
+                    <h4>Sunburn Relief Gel 100ml</h4>
+                    <p>Cools and soothes sunburned skin.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Sun Relief Gel', '22.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="vitamins-minerals">
+            <h3>Vitamins and Minerals</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/vita.webp" alt="Ascovit Cee">
+                    <h4>Ascovit Cee (Vitamin C)</h4>
+                    <p>Immune-boosting vitamin C supplement.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Ascovit Cee', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vita2.webp" alt="Nexcofer">
+                    <h4>Nexcofer (Iron Supplement)</h4>
+                    <p>Iron supplement for anemia prevention.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Nexcofer', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vitamines.webp" alt="Multivitamin Tablets">
+                    <h4>Multivitamin Tablets 30's</h4>
+                    <p>Daily essential vitamins and minerals.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Multivitamin Tablets', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/vittaa.webp" alt="Calcium Tablets">
+                    <h4>Calcium 600mg Tablets 20's</h4>
+                    <p>Supports strong bones and teeth.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Calcium Tablets', '22.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/viita.webp" alt="Zinc Tablets">
+                    <h4>Zinc 50mg Tablets 30's</h4>
+                    <p>Boosts immune system and skin health.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Zinc Tablets', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Vitamin B Complex">
+                    <h4>Vitamin B Complex 30's</h4>
+                    <p>Supports energy and nervous system.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Vitamin B Complex', '25.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="digestion-stomach">
+            <h3>Digestion and Stomach</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/stoma.webp" alt="Antacid Tablets">
+                    <h4>Antacid Tablets 20's</h4>
+                    <p>Relieves heartburn and indigestion.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Antacid Tablets', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/stomaaa.webp" alt="Probiotic Capsules">
+                    <h4>Probiotic Capsules 30's</h4>
+                    <p>Supports gut health and digestion.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Probiotic Capsules', '35.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/stomach.jpg" alt="Laxative Tablets">
+                    <h4>Laxative Tablets 10's</h4>
+                    <p>Relieves constipation.</p>
+                    <div class="price">₵12.00</div>
+                    <button onclick="addToCart('Laxative Tablets', '12.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/stomach.jpg" alt="Anti-Diarrhea Tablets">
+                    <h4>Anti-Diarrhea Tablets 12's</h4>
+                    <p>Stops diarrhea and restores balance.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Anti-Diarrhea Tablets', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Stomach Relief Liquid">
+                    <h4>Stomach Relief Liquid 150ml</h4>
+                    <p>Eases stomach upset and nausea.</p>
+                    <div class="price">₵22.00</div>
+                    <button onclick="addToCart('Stomach Relief Liquid', '22.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="feminine-care">
+            <h3>Feminine Care</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/feem.avif"alt="Sanitary Pads">
+                    <h4>Sanitary Pads 10's</h4>
+                    <p>Comfortable and absorbent menstrual pads.</p>
+                    <div class="price">₵15.00</div>
+                    <button onclick="addToCart('Sanitary Pads', '15.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/fem care.jpg" alt="Tampons">
+                    <h4>Tampons 16's</h4>
+                    <p>Discreet and reliable menstrual protection.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Tampons', '20.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/femi.webp" alt="Feminine Wash">
+                    <h4>Feminine Wash 200ml</h4>
+                    <p>Gentle cleansing for intimate areas.</p>
+                    <div class="price">₵18.00</div>
+                    <button onclick="addToCart('Feminine Wash', '18.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/femiii.webp" alt="Yeast Infection Cream">
+                    <h4>Yeast Infection Cream 20g</h4>
+                    <p>Treats vaginal yeast infections.</p>
+                    <div class="price">₵25.00</div>
+                    <button onclick="addToCart('Yeast Infection Cream', '25.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Menstrual Pain Relief">
+                    <h4>Menstrual Pain Relief Tablets 12's</h4>
+                    <p>Eases menstrual cramps and discomfort.</p>
+                    <div class="price">₵20.00</div>
+                    <button onclick="addToCart('Menstrual Pain Relief', '20.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="mens-health">
+            <h3>Men's Health</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/men.webp" alt="Prostate Supplement">
+                    <h4>Prostate Health Supplement 30's</h4>
+                    <p>Supports prostate health and urinary function.</p>
+                    <div class="price">₵40.00</div>
+                    <button onclick="addToCart('Prostate Supplement', '40.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/mencc.webp" alt="Testosterone Booster">
+                    <h4>Testosterone Booster Capsules 30's</h4>
+                    <p>Enhances energy and vitality.</p>
+                    <div class="price">₵35.00</div>
+                    <button onclick="addToCart('Testosterone Booster', '35.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/mens.webp" alt="Hair Loss Treatment">
+                    <h4>Hair Loss Treatment 60ml</h4>
+                    <p>Promotes hair regrowth and strength.</p>
+                    <div class="price">₵50.00</div>
+                    <button onclick="addToCart('Hair Loss Treatment', '50.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/BENYLIN MUCUS RELIEF.jpg" alt="Men Multivitamin">
+                    <h4>Men's Multivitamin 30's</h4>
+                    <p>Daily nutrients tailored for men.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Men Multivitamin', '30.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/Erectile Support.webp" alt="Erectile Support">
+                    <h4>Erectile Support Tablets 10's</h4>
+                    <p>Supports male sexual health.</p>
+                    <div class="price">₵45.00</div>
+                    <button onclick="addToCart('Erectile Support', '45.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section" id="health-services">
+            <h3>Health Services</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Pharmacy Consultation">
+                    <h4>Pharmacy Consultation</h4>
+                    <p>Professional advice on medication and health issues.</p>
+                    <div class="price">₵10.00</div>
+                    <button onclick="addToCart('Pharmacy Consultation', '10.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Vaccination Service">
+                    <h4>Vaccination Service</h4>
+                    <p>Administration of vaccines for various diseases.</p>
+                    <div class="price">₵50.00</div>
+                    <button onclick="addToCart('Vaccination Service', '50.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Blood Pressure Check">
+                    <h4>Blood Pressure Check</h4>
+                    <p>Quick and accurate blood pressure monitoring.</p>
+                    <div class="price">₵5.00</div>
+                    <button onclick="addToCart('Blood Pressure Check', '5.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Glucose Testing">
+                    <h4>Blood Glucose Testing</h4>
+                    <p>Monitors blood sugar levels.</p>
+                    <div class="price">₵8.00</div>
+                    <button onclick="addToCart('Glucose Testing', '8.00')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagefolder/skyblogo.png" alt="Health Screening">
+                    <h4>Basic Health Screening</h4>
+                    <p>Comprehensive check for common health issues.</p>
+                    <div class="price">₵30.00</div>
+                    <button onclick="addToCart('Health Screening', '30.00')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-section" id="cart-section">
+            <h3>Your Cart</h3>
+            <div id="cart-items"></div>
+            <p id="cart-total">Total Items: 0 | Total Amount: ₵0.00</p>
+            <button id="proceed-payment" style="display:none;" onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Contact us: info@skyhealthcare.com.gh | Phone: +233-555-1234</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">🌐</a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">📸</a>
+            </div>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>© 2025 Sky Health Care. All rights reserved. | Serving Greater Accra, Ashanti, Central, Western (Takoradi), Eastern, Volta Regions</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            } else {
+                console.log('Hamburger or navMenu not found');
+            }
+
+            // Search Functionality for Products
+            function searchProducts() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const productCards = document.querySelectorAll('.product-card');
+                productCards.forEach(card => {
+                    const name = card.querySelector('h4').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    if (name.includes(searchInput) || description.includes(searchInput)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            document.getElementById('searchInput').addEventListener('input', searchProducts);
+
+            // Cart Functionality
+            window.addToCart = function(itemName, price) {
+                price = parseFloat(price);
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let existingItem = cart.find(item => item.name === itemName);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name: itemName, price: price, quantity: 1 });
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            };
+
+            window.removeFromCart = function(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            };
+
+            function updateCartDisplay() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let cartItemsDiv = document.getElementById('cart-items');
+                cartItemsDiv.innerHTML = '';
+                let totalItems = 0;
+                let totalAmount = 0;
+                cart.forEach((item, index) => {
+                    let subtotal = item.price * item.quantity;
+                    totalItems += item.quantity;
+                    totalAmount += subtotal;
+                    let itemDiv = document.createElement('div');
+                    itemDiv.classList.add('cart-item');
+                    itemDiv.innerHTML = `
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity} | Subtotal: ₵${subtotal.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsDiv.appendChild(itemDiv);
+                });
+                document.getElementById('cart-total').textContent = `Total Items: ${totalItems} | Total Amount: ₵${totalAmount.toFixed(2)}`;
+                let proceedBtn = document.getElementById('proceed-payment');
+                proceedBtn.style.display = totalItems > 0 ? 'block' : 'none';
+            }
+
+            window.proceedToPayment = function() {
+    window.location.href = 'payment-delivery.html';
+};
+                // In a real app, this would redirect to a payment page or process payment
+        
+
+            // Initial cart display
+            updateCartDisplay();
+        });
+    </script>
+</body>
+</html>

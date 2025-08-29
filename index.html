@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Health Care - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #007bff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            max-height: 80px;
+            width: auto;
+            max-width: 300px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu button {
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-menu button:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo-left {
+            max-height: 120px;
+            width: auto;
+            max-width: 400px;
+            margin-left: 1rem;
+            flex-shrink: 1;
+        }
+
+        .header-logo-right {
+            max-height: 120px;
+            width: auto;
+            max-width: 400px;
+            margin-right: 1rem;
+            flex-shrink: 1;
+        }
+
+        .header-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 1rem;
+        }
+
+        .group-text {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.25rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #f4f4f9;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background-image: url("imagefolder/lab33.png");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #218838;
+        }
+
+        .location-selector {
+            margin-bottom: 1.5rem;
+        }
+
+        .location-selector select {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* Slideshow Section */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 400px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Featured Stores Section */
+        .featured-stores {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .featured-stores h3 {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .store-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .store-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 250px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .store-card:hover {
+            transform: scale(1.05);
+        }
+
+        .store-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .store-card h4 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .store-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .store-card .rating {
+            font-size: 1rem;
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+
+        .store-card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .store-card button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #ddd;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                padding: 0.5rem;
+            }
+
+            .nav-logo {
+                max-height: 40px;
+                max-width: 150px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 1rem;
+                background-color: #007bff;
+                flex-direction: column;
+                width: 200px;
+                padding: 1rem;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu button {
+                width: 100%;
+                margin: 0.3rem 0;
+                text-align: center;
+            }
+
+            header {
+                flex-direction: row; /* Keep in a single row */
+                padding: 0.5rem 1rem;
+                align-items: center;
+            }
+
+            .header-logo-left {
+                max-height: 60px;
+                max-width: 120px;
+                margin-left: 0.5rem;
+                flex-shrink: 1;
+            }
+
+            .header-logo-right {
+                max-height: 60px;
+                max-width: 120px;
+                margin-right: 0.5rem;
+                flex-shrink: 1;
+            }
+
+            .header-text-container {
+                max-width: 50%;
+                margin: 0 0.5rem;
+                flex-shrink: 2;
+            }
+
+            .group-text {
+                font-size: 0.7rem;
+            }
+
+            header h1 {
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .hero {
+                padding: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .location-selector select {
+                width: 100%;
+            }
+
+            .featured-stores {
+                padding: 0.5rem;
+            }
+
+            .store-card {
+                width: 100%;
+            }
+
+            .slideshow-container {
+                height: 250px;
+            }
+
+            .slide img {
+                max-height: 250px;
+            }
+
+            .slide-caption {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="hamburger">☰</button>
+            <div class="nav-menu">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='#orders'">Orders</button>
+                <button onclick="window.location.href='singup.html'">Sign Up</button>
+                <button onclick="window.location.href='login.html'">Login</button>
+                <button onclick="window.location.href='login.html'">Logout</button>
+            </div>
+            <div class="nav-logo-container">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="imagefolder/skyblogo.png" alt="Sky Health Care Navigation Logo" class="nav-logo">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <img src="imagefolder/logo001.jpg" alt="Sky Health Care Logo Left" class="header-logo-left">
+        <div class="header-text-container">
+            <div class="group-text">(GROUP-2)</div>
+            <h1>Sky Health Care - Quality Medications & Herbal Products</h1>
+        </div>
+        <img src="imagefolder/logo 002.jpg" alt="Sky Health Care Logo Right" class="header-logo-right">
+    </header>
+
+    <section class="slideshow-container">
+        <div class="slide">
+            <img src="imagefolder/accra_pharma.jpg" alt="Greater Accra Pharmacy">
+            <div class="slide-caption">Greater Accra Pharmacy</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/accra_herb.jpg" alt="Greater Accra Herbal Shop">
+            <div class="slide-caption">Greater Accra Herbal Shop</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/Kp.png" alt="Ashanti Region Pharmacy">
+            <div class="slide-caption">Ashanti Region Pharmacy</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/ashanti_herbal.jpg" alt="Ashanti Region Herbal Shop">
+            <div class="slide-caption">Ashanti Region Herbal Shop</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/cape_p.png" alt="Central Region Pharmacy">
+            <div class="slide-caption">Central Region Pharmacy</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/central_herbal.jpg" alt="Central Region Herbal Shop">
+            <div class="slide-caption">Central Region Herbal Shop</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/taadi _p.png" alt="Western Region Pharmacy">
+            <div class="slide-caption">Western Region Pharmacy</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/tardi_herbal.jpg" alt="Western Region Herbal Shop">
+            <div class="slide-caption">Western Region Herbal Shop</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/koftown_p.png" alt="Eastern Region Pharmacy">
+            <div class="slide-caption">Eastern Region Pharmacy</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/eastern_herbal.jpg" alt="Eastern Region Herbal Shop">
+            <div class="slide-caption">Eastern Region Herbal Shop</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/ho_p.png" alt="Volta Region Pharmacy">
+            <div class="slide-caption">Volta Region Pharmacy</div>
+        </div>
+        <div class="slide">
+            <img src="imagefolder/volta_herbal.jpg" alt="Volta Region Herbal Shop">
+            <div class="slide-caption">Volta Region Herbal Shop</div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Sky Health Care</h2>
+            <p>Your Trusted Source for Medications and Herbal Products in Ghana</p>
+            <div class="location-selector">
+                <select id="regionSelector" onchange="updateStores()">
+                    <option value="">Select Your Region</option>
+                    <option value="greater-accra">Greater Accra</option>
+                    <option value="ashanti">Ashanti Region</option>
+                    <option value="central">Central Region</option>
+                    <option value="western">Western Region (Takoradi)</option>
+                    <option value="eastern">Eastern Region</option>
+                    <option value="volta">Volta Region</option>
+                </select>
+            </div>
+            <button onclick="window.location.href='#start-ordering'">Start Ordering</button>
+        </div>
+    </section>
+
+    <section class="featured-stores" id="stores">
+        <h3>Featured Stores in Your Region</h3>
+        <div class="store-grid">
+            <!-- Stores will be dynamically added here -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Contact us: info@skyhealthcare.com.gh | Phone: +233-555-1234</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank">🌐</a>
+                <a href="https://twitter.com" target="_blank">🐦</a>
+                <a href="https://instagram.com" target="_blank">📸</a>
+            </div>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>© 2025 Sky Health Care. All rights reserved. | Serving Greater Accra, Ashanti, Central, Western (Takoradi), Eastern, Volta Regions</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const storesData = {
+                'greater-accra': [
+                    { name: "Accra Central Pharmacy", description: "Full range of medications", image: "imagefolder/accra_pharma.jpg", rating: 4.7 },
+                    { name: "Herbal Hub Accra", description: "Natural herbal remedies", image: "imagefolder/accra_herb.jpg", rating: 4.5 }
+                ],
+                'ashanti': [
+                    { name: "Kumasi Main Pharmacy", description: "Affordable drugs and consultations", image: "imagefolder/Kp.png", rating: 4.8 },
+                    { name: "Ashanti Herbal Center", description: "Traditional herbal products", image: "imagefolder/ashanti_herbal.jpg", rating: 4.6 }
+                ],
+                'central': [
+                    { name: "Cape Coast Pharmacy", description: "Quick delivery of essentials", image: "imagefolder/cape_p.png", rating: 4.4 },
+                    { name: "Central Herbal Store", description: "Organic herbal solutions", image: "imagefolder/central_herbal.jpg", rating: 4.3 }
+                ],
+                'western': [
+                    { name: "Takoradi Pharmacy", description: "Western region medical supplies", image: "imagefolder/taadi _p.png", rating: 4.5 },
+                    { name: "Takoradi Herbal Shop", description: "Local herbal treatments", image: "imagefolder/tardi_herbal.jpg", rating: 4.4 }
+                ],
+                'eastern': [
+                    { name: "Koforidua Pharmacy", description: "Eastern region health products", image: "imagefolder/koftown_p.png", rating: 4.6 },
+                    { name: "Eastern Herbal Clinic", description: "Natural remedies for wellness", image: "imagefolder/eastern_herbal.jpg", rating: 4.7 }
+                ],
+                'volta': [
+                    { name: "Ho Pharmacy", description: "Volta region medications", image: "imagefolder/ho_p.png", rating: 4.5 },
+                    { name: "Volta Herbal Center", description: "Traditional Volta herbs", image: "imagefolder/volta_herbal.jpg", rating: 4.6 }
+                ]
+            };
+
+            // Function to update stores based on selected region
+            function updateStores() {
+                const selectedRegion = document.getElementById('regionSelector')?.value;
+                const storeGrid = document.querySelector('.store-grid');
+                storeGrid.innerHTML = '';
+                if (selectedRegion && storesData[selectedRegion]) {
+                    storesData[selectedRegion].forEach(store => {
+                        const storeCard = document.createElement('div');
+                        storeCard.classList.add('store-card');
+                        const stars = '★'.repeat(Math.floor(store.rating)) + (store.rating % 1 >= 0.5 ? '½' : '');
+                        const browseUrl = (selectedRegion === 'greater-accra' && store.name === 'Accra Central Pharmacy') 
+                            ? 'accra-central-pharmacy.html' 
+                            : (selectedRegion === 'greater-accra' && store.name === 'Herbal Hub Accra') 
+                                ? 'herbal-hub-accra.html' 
+                                : (selectedRegion === 'ashanti' && store.name === 'Kumasi Main Pharmacy') 
+                                    ? 'kumasi-main-pharmacy.html' 
+                                    : (selectedRegion === 'ashanti' && store.name === 'Ashanti Herbal Center') 
+                                        ? 'ashanti-herbal-center.html' 
+                                        : (selectedRegion === 'central' && store.name === 'Cape Coast Pharmacy') 
+                                            ? 'cape-coast-pharmacy.html' 
+                                            : (selectedRegion === 'central' && store.name === 'Central Herbal Store') 
+                                                ? 'central-herbal-store.html' 
+                                                : (selectedRegion === 'western' && store.name === 'Takoradi Pharmacy') 
+                                                    ? 'takoradi-pharmacy.html' 
+                                                    : (selectedRegion === 'western' && store.name === 'Takoradi Herbal Shop') 
+                                                        ? 'takoradi-herbal-shop.html' 
+                                                        : (selectedRegion === 'eastern' && store.name === 'Koforidua Pharmacy') 
+                                                            ? 'koforidua-pharmacy.html' 
+                                                            : (selectedRegion === 'eastern' && store.name === 'Eastern Herbal Clinic') 
+                                                                ? 'eastern-herbal-clinic.html' 
+                                                                : (selectedRegion === 'volta' && store.name === 'Ho Pharmacy') 
+                                                                    ? 'ho-pharmacy.html' 
+                                                                    : (selectedRegion === 'volta' && store.name === 'Volta Herbal Center') 
+                                                                        ? 'volta-herbal-center.html' 
+                                                                        : '#browse-' + store.name.toLowerCase().replace(/ /g, '-');
+                        storeCard.innerHTML = `
+                            <img src="${store.image}" alt="${store.name}">
+                            <h4>${store.name}</h4>
+                            <p>${store.description}</p>
+                            <div class="rating">${stars} (${store.rating})</div>
+                            <button onclick="window.location.href='${browseUrl}'">Browse Store</button>
+                        `;
+                        storeGrid.appendChild(storeCard);
+                    });
+                } else {
+                    storeGrid.innerHTML = '<p>Select a region to see featured stores.</p>';
+                }
+            }
+
+            // Function to search items (stores/products)
+            function searchItems() {
+                const searchInput = document.getElementById('searchInput');
+                if (!searchInput) {
+                    console.log('Search input not found');
+                    return;
+                }
+                const value = searchInput.value.toLowerCase();
+                const selectedRegion = document.getElementById('regionSelector')?.value;
+                const storeGrid = document.querySelector('.store-grid');
+                storeGrid.innerHTML = '';
+                if (selectedRegion && storesData[selectedRegion]) {
+                    const filteredStores = storesData[selectedRegion].filter(store =>
+                        store.name.toLowerCase().includes(value) ||
+                        store.description.toLowerCase().includes(value)
+                    );
+                    if (filteredStores.length > 0) {
+                        filteredStores.forEach(store => {
+                            const storeCard = document.createElement('div');
+                            storeCard.classList.add('store-card');
+                            const stars = '★'.repeat(Math.floor(store.rating)) + (store.rating % 1 >= 0.5 ? '½' : '');
+                            const browseUrl = (selectedRegion === 'greater-accra' && store.name === 'Accra Central Pharmacy') 
+                                ? 'accra-central-pharmacy.html' 
+                                : (selectedRegion === 'greater-accra' && store.name === 'Herbal Hub Accra') 
+                                    ? 'herbal-hub-accra.html' 
+                                    : (selectedRegion === 'ashanti' && store.name === 'Kumasi Main Pharmacy') 
+                                        ? 'kumasi-main-pharmacy.html' 
+                                        : (selectedRegion === 'ashanti' && store.name === 'Ashanti Herbal Center') 
+                                            ? 'ashanti-herbal-center.html' 
+                                            : (selectedRegion === 'central' && store.name === 'Cape Coast Pharmacy') 
+                                                ? 'cape-coast-pharmacy.html' 
+                                                : (selectedRegion === 'central' && store.name === 'Central Herbal Store') 
+                                                    ? 'central-herbal-store.html' 
+                                                    : (selectedRegion === 'western' && store.name === 'Takoradi Pharmacy') 
+                                                        ? 'takoradi-pharmacy.html' 
+                                                        : (selectedRegion === 'western' && store.name === 'Takoradi Herbal Shop') 
+                                                            ? 'takoradi-herbal-shop.html' 
+                                                            : (selectedRegion === 'eastern' && store.name === 'Koforidua Pharmacy') 
+                                                                ? 'koforidua-pharmacy.html' 
+                                                                : (selectedRegion === 'eastern' && store.name === 'Eastern Herbal Clinic') 
+                                                                    ? 'eastern-herbal-clinic.html' 
+                                                                    : (selectedRegion === 'volta' && store.name === 'Ho Pharmacy') 
+                                                                        ? 'ho-pharmacy.html' 
+                                                                        : (selectedRegion === 'volta' && store.name === 'Volta Herbal Center') 
+                                                                            ? 'volta-herbal-center.html' 
+                                                                            : '#browse-' + store.name.toLowerCase().replace(/ /g, '-');
+                            storeCard.innerHTML = `
+                                <img src="${store.image}" alt="${store.name}">
+                                <h4>${store.name}</h4>
+                                <p>${store.description}</p>
+                                <div class="rating">${stars} (${store.rating})</div>
+                                <button onclick="window.location.href='${browseUrl}'">Browse Store</button>
+                            `;
+                            storeGrid.appendChild(storeCard);
+                        });
+                    } else {
+                        storeGrid.innerHTML = '<p>No stores found matching your search.</p>';
+                    }
+                } else {
+                    storeGrid.innerHTML = '<p>Select a region first to search stores.</p>';
+                }
+            }
+
+            // Initial call and event listeners
+            updateStores();
+            const regionSelector = document.getElementById('regionSelector');
+            if (regionSelector) {
+                regionSelector.addEventListener('change', updateStores);
+            } else {
+                console.log('Region selector not found');
+            }
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', searchItems);
+            } else {
+                console.log('Search input not found');
+            }
+
+            // Slideshow JavaScript
+            let slideIndex = 0;
+            const slides = document.getElementsByClassName("slide");
+
+            function showSlides() {
+                if (slides.length === 0) {
+                    console.log('No slides found');
+                    return;
+                }
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1 }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 3000); // Change slide every 3 seconds
+            }
+
+            showSlides(); // Start the slideshow
+
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            } else {
+                console.log('Hamburger or navMenu not found');
+            }
+        });
+    </script>
+</body>
+</html>
